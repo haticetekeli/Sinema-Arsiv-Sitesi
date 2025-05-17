@@ -2,6 +2,12 @@
 
 @{
     ViewData["Title"] = Model.Title;
+    string embedUrl = Model.VideoUrl;
+
+    if (!string.IsNullOrEmpty(embedUrl) && embedUrl.Contains("watch?v="))
+    {
+        embedUrl = embedUrl.Replace("watch?v=", "embed/");
+    }
 }
 
 <div class="movie-detail">
@@ -25,11 +31,11 @@
         </ul>
     }
 
-    @if (!string.IsNullOrEmpty(Model.VideoUrl))
+    @if (!string.IsNullOrEmpty(embedUrl))
     {
         <h3>Fragman</h3>
         <div class="video-container">
-            <iframe width="560" height="315" src="@Model.VideoUrl"
+            <iframe width="560" height="315" src="@embedUrl"
                     title="Fragman" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
