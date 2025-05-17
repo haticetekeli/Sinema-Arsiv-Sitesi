@@ -81,7 +81,6 @@ namespace SinemaArsivSitesi.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-
             return View(model);
         }
     }
