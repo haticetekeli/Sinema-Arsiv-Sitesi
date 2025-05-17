@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #222;
+    margin: 20px 0;
+}
+
+
+.ust {
+    background-color: #000; 
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+    .ust img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+    }
+
+.menu {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 14px 0;
+    font-size: 18px;
+}
+
+    .menu ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .menu li {
+        display: inline;
+    }
+
+    .menu a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 12px 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .menu a:hover {
+            background-color: #ff6600; 
+            color: white;
+        }
+
+    .menu .login-btn {
+        background-color: #ff6600;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-weight: 700;
+        transition: background-color 0.3s;
+        text-decoration: none;
+    }
+
+        .menu .login-btn:hover {
+            background-color: #cc5200;
+        }
+
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+    }
+
+        .menu ul {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu a {
+            display: block;
+        }
+}
+
+
+
+.login-btn {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .login-btn:hover {
+        background-color: #cc5200;
+    }
+
+.film-listesi {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+.film {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 260px;
+    transition: transform 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    min-height: 460px; 
+}
+
+    .film:hover {
+        transform: scale(1.03);
+    }
+
+    .film img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .film h4 {
+        margin: 10px 0 15px;
+        font-size: 18px;
+        flex-grow: 1; 
+    }
+
+.butbut,
+.btn-edit,
+.btn-delete {
+    display: inline-block;
+    padding: 10px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.butbut {
+    background-color: #ff6600;
+    color: white;
+}
+
+    .butbut:hover {
+        background-color: #cc5200;
+    }
+
+.admin-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+    .admin-buttons a,
+    .admin-buttons form {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+        .admin-buttons a .btn-edit,
+        .admin-buttons button.btn-delete {
+            width: 100%;
+            padding: 10px 0;
+            font-weight: 600;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+.btn-edit {
+    background-color: #40c4ff; 
+    color: white;
+}
+
+    .btn-edit:hover {
+        background-color: #00bcd4;
+    }
+
+.btn-delete {
+    background-color: #e53935; 
+    color: white;
+}
+
+    .btn-delete:hover {
+        background-color: #c62828;
+    }
+
+
+
+table {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+    table td {
+        padding: 4px 6px;
+    }
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .film img {
+        height: 250px;
+    }
+}
+.form-container {
+    max-width: 700px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #444;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        transition: border-color 0.3s;
+    }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #ff6600;
+            outline: none;
+        }
+
+.text-danger {
+    font-size: 13px;
+    color: #e53935;
+    margin-top: 5px;
+    display: block;
+}
+
+.btn-primary {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #cc5200;
+    }
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-left: 6px solid #dc3545;
+    color: #721c24;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+.hakkinda-container {
+    max-width: 900px;
+    margin: 40px auto 60px; 
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+    .hakkinda-container h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #222;
+    }
+
+    .hakkinda-container p {
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+.footer-strip {
+    background-color: #333; 
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+    border-radius: 0 0 12px 12px;
+    margin-top: 40px;
+}
+

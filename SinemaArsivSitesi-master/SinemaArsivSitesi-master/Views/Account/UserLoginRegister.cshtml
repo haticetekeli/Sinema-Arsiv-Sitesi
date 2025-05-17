@@ -1,0 +1,18 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Kullanıcı Girişi";
+}
+
+<h1>Kullanıcı Girişi</h1>
+<form method="post" action="@Url.Action("UserLogin", "Account")">
+    <input type="text" name="usernameOrEmail" placeholder="E-mail veya Kullanıcı Adı" required />
+    <input type="password" name="password" placeholder="Şifre" required />
+    <button type="submit">Giriş Yap</button>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p style="color: red;">@ViewBag.Message</p>  
+}
+
+<a href="@Url.Action("Register", "Account")">Hesabın yok mu? Kayıt Ol</a>

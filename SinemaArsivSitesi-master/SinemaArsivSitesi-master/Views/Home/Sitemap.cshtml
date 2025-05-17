@@ -1,0 +1,89 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Site Haritası";
+}
+
+<style>
+    .sitemap-container {
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+        .sitemap-container h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #333;
+        }
+
+        .sitemap-container p {
+            font-size: 16px;
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .sitemap-container ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sitemap-container li {
+            margin: 12px 0;
+        }
+
+        .sitemap-container a {
+            display: block;
+            padding: 12px 18px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #333;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+            .sitemap-container a:hover {
+                background-color: #e0e0e0;
+                transform: translateX(5px);
+            }
+
+    @@media (max-width: 600px) {
+        .sitemap-container
+
+    {
+        padding: 25px;
+    }
+
+    .sitemap-container h1 {
+        font-size: 22px;
+    }
+
+    .sitemap-container a {
+        font-size: 15px;
+        padding: 10px 15px;
+    }
+
+    }
+</style>
+
+<div class="sitemap-container">
+    <h1>Site Haritası</h1>
+    <p>Web sitemizde kolay gezinmeniz için sayfalar aşağıda listelenmiştir.</p>
+    <ul>
+        <li><a href="@Url.Action("Index", "Home")">Ana Sayfa</a></li>
+        <li><a href="@Url.Action("Index", "Home")">Filmler</a></li>
+        <li><a href="@Url.Action("Create", "Movie")">Film Ekle</a></li>
+        <li><a href="@Url.Action("Contact", "Home")">İletişim</a></li>
+        <li><a href="@Url.Action("About", "Home")">Hakkında</a></li>
+        <li><a href="@Url.Action("Login", "User")">Kullanıcı Girişi</a></li>
+        <li><a href="@Url.Action("Register", "User")">Kullanıcı Kaydı</a></li>
+        <li><a href="@Url.Action("AdminLogin", "Account")">Yönetici Girişi</a></li>
+    </ul>
+</div>

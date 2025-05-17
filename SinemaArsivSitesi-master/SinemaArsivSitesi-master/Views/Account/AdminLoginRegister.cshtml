@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Yönetici İşlemleri";
+}
+
+<div class="giris-secim-container">
+    <h1>Yönetici İşlemleri</h1>
+    <p>Lütfen yapmak istediğiniz işlemi seçin:</p>
+
+    <div class="secim-butonlari">
+        <a class="butbut" href="@Url.Action("AdminLogin", "Account")">Giriş Yap</a>
+        <a class="butbut" href="@Url.Action("AdminRegister", "Account")">Kayıt Ol</a>
+    </div>
+
+    <div class="geri-don">
+        <a href="@Url.Action("Index", "Home")">Ana Sayfaya Dön</a>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kayıt Ol</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script>
+        async function uyeol(event) {
+            event.preventDefault();
+
+            var username = document.getElementById("kullaniciadi").value;
+            var email = document.getElementById("kemail").value;
+            var password = document.getElementById("sifre").value;
+
+            let response = await fetch("@Url.Action("Register", "Account")", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password })
+            });
+
+            let data = await response.json();
+            if (data.success) {
+                alert("Kayıt başarılı! Şimdi giriş yapabilirsiniz.");
+                window.location.href = "@Url.Action("Login", "User")"; 
+            } else {
+                alert(data.message);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form id="registerForm" onsubmit="uyeol(event)">
+            <h2>Kullanıcı Kayıt Paneli</h2>
+            <div class="input-control">
+                <input id="kullaniciadi" placeholder="Kullanıcı Adı" type="text" required autofocus>
+            </div>
+            <div class="input-control">
+                <input id="kemail" placeholder="E-mail" type="email" required>
+            </div>
+            <div class="input-control">
+                <input id="sifre" placeholder="Şifre" type="password" required>
+            </div>
+            <button class="btn-1" type="submit">Kayıt Ol</button>
+            <p>Sitemize üye misiniz? <a href="@Url.Action("Login", "User")">Giriş Yap</a></p>
+        </form>
+    </div>
+</body>
+</html>
+<style>
+    body {
+        background-color: #f4f6f9;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 80px auto;
+        padding: 40px 30px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 26px;
+        color: #333;
+    }
+
+    .input-control {
+        margin-bottom: 20px;
+    }
+
+        .input-control input {
+            width: 100%;
+            padding: 14px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+            .input-control input:focus {
+                border-color: #ff6600;
+                outline: none;
+            }
+
+    .btn-1 {
+        background-color: #ff6600;
+        color: #fff;
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-1:hover {
+            background-color: #cc5200;
+            transform: translateY(-2px);
+        }
+
+    #error-message {
+        margin-top: 10px;
+        color: red;
+        text-align: center;
+    }
+
+    p {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+    }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            p a:hover {
+                text-decoration: underline;
+            }
+</style>
+

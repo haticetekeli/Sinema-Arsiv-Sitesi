@@ -1,0 +1,87 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Giriş Seçenekleri</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .option {
+            display: inline-block;
+            background-color: #2196F3;
+            color: white;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: 500;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px auto;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .option:hover {
+                background-color: #1976D2;
+                transform: translateY(-2px);
+            }
+
+        @@media (max-width: 480px) {
+            .container
+
+        {
+            padding: 30px 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .option {
+            font-size: 16px;
+            padding: 10px 24px;
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hesap Seçimi</h1>
+
+        <a href="@Url.Action("Index", "Home")" class="option">Ana Sayfa</a><br />
+        <a href="@Url.Action("UserSelect", "Account")" class="option">Kullanıcı</a><br />
+        <a href="@Url.Action("AdminLogin", "Account")" class="option">Yönetici</a>
+    </div>
+</body>
+</html>

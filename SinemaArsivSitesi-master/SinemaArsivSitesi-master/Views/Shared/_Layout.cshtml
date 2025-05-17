@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <title>@ViewData["Title"] - BM Film</title>
+    <link rel="stylesheet" href="~/css/style.css?v=9" />
+</head>
+<body>
+
+    <div class="ust">
+        <a href="@Url.Action("Index", "Home")">
+            <img src="@Url.Content("~/img/BM.jpg")" height="80" width="250" alt="BM Film Logo" />
+        </a>
+    </div>
+
+    <div class="menu">
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")"><b>Ana Sayfa</b></a></li>
+            <li><a href="@Url.Action("Sitemap", "Home")">Site Haritası</a></li>
+            <li><a href="@Url.Action("Contact", "Home")">İletişim</a></li>
+            <li><a href="@Url.Action("About", "Home")">Hakkında</a></li>
+
+            @if (User.IsInRole("User") || User.IsInRole("Admin"))
+            {
+                <li><a href="@Url.Action("Create", "Movie")">Film Ekle</a></li>
+            }
+
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <li><a href="@Url.Action("Giris", "Home")" class="login-btn">Giriş Yap</a></li>
+            }
+            else
+            {
+                <li><span style="color:white; padding:10px;">@User.Identity.Name</span></li>
+                <li><a href="@Url.Action("Logout", "Account")" class="login-btn">Çıkış Yap</a></li>
+            }
+        </ul>
+    </div>
+
+    <div class="ana_govde">
+        @RenderBody()
+    </div>
+
+    <div class="footer-strip">
+        © 2025 BM Film - Tüm hakları saklıdır.
+    </div>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

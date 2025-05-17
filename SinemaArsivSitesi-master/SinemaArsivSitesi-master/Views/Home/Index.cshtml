@@ -1,0 +1,54 @@
+﻿@model SinemaArsivSitesi.Models.HomeIndexViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div style="background-color:#d4edda; color:#155724; padding:15px; margin:20px auto; max-width:800px; border-radius:8px; text-align:center;">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<h2>Vizyondaki Filmler ve Diziler</h2>
+
+<div class="film-listesi" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+    @foreach (var movie in Model.Filmler)
+    {
+        <div class="film" style="width:220px; background:#fff; padding:10px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; position: relative;">
+            <a href="@Url.Action("Details", "Movie", new { id = movie.Id })" style="text-decoration:none; color:#000;">
+                <img src="@movie.PosterUrl" alt="@movie.Title Filmi Afişi" style="width:100%; height:320px; object-fit:cover; border-radius:5px;" />
+                <h4 style="margin:10px 0 5px;">@movie.Title (@movie.Year)</h4>
+            </a>
+            <table style="width:100%; font-size:14px; text-align:left; margin-top:5px;">
+                <tr><td>Tür:</td><td><b>@movie.Genre</b></td></tr>
+                <tr><td>Yönetmen:</td><td><b>@movie.Director</b></td></tr>
+                <tr><td>Dil:</td><td>@movie.Language</td></tr>
+                <tr><td>IMDB:</td><td><b>@movie.IMDBRating</b></td></tr>
+                <tr>
+                    <td colspan="2" style="text-align:center; padding-top:10px;">
+                        <a href="@Url.Action("Details", "Movie", new { id = movie.Id })">
+                            <button class="butbut" style="background:#ff6600; color:#fff; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;">Detayları Gör</button>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="admin-buttons">
+                    <a href="@Url.Action("Edit", "Movie", new { id = movie.Id })" class="btn-edit">Düzenle</a>
+
+                    <form asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.Id" method="post" onsubmit="return confirm('Bu filmi silmek istediğinizden emin misiniz?');">
+                        <button type="submit" class="btn-delete">Sil</button>
+                    </form>
+                </div>
+            }
+
+        </div>
+    }
+</div>
+
+

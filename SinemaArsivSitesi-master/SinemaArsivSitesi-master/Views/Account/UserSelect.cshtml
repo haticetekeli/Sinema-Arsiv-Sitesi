@@ -1,0 +1,105 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Kullanıcı Giriş/Kayıt";
+}
+
+<div class="giris-secim-container">
+    <h1>Kullanıcı İşlemleri</h1>
+    <p>Lütfen yapmak istediğiniz işlemi seçin:</p>
+
+    <div class="secim-butonlari">
+        <a class="butbut" href="@Url.Action("Login", "User")">Giriş Yap</a>
+        <a class="butbut" href="@Url.Action("Register", "User")">Kayıt Ol</a>
+    </div>
+
+    <div class="geri-don">
+        <a href="@Url.Action("Index", "Home")">Ana Sayfaya Dön</a>
+    </div>
+</div>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #f0f0f0, #f0f0f0);
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .giris-secim-container {
+        max-width: 600px;
+        margin: 100px auto;
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.95); 
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        text-align: center;
+    }
+
+        .giris-secim-container h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .giris-secim-container p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: #000;
+        }
+
+    .secim-butonlari {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .butbut {
+        background-color: #ff6600;
+        color: white;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .butbut:hover {
+            background-color: #ff6600;
+            transform: scale(1.05);
+        }
+
+    .geri-don {
+        margin-top: 40px;
+    }
+
+        .geri-don a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+
+            .geri-don a:hover {
+                color: #fff;
+            }
+
+    @@media (max-width: 480px) {
+        .giris-secim-container
+
+    {
+        padding: 20px;
+    }
+
+    .butbut {
+        width: 100%;
+        text-align: center;
+    }
+
+    .secim-butonlari {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    }
+</style>

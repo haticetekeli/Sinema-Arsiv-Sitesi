@@ -1,0 +1,130 @@
+﻿<style>
+    body {
+        background-color: #f4f6f9;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 80px auto;
+        padding: 40px 30px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 26px;
+        color: #333;
+    }
+
+    .input-control {
+        margin-bottom: 20px;
+    }
+
+        .input-control input {
+            width: 100%;
+            padding: 14px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+            .input-control input:focus {
+                border-color: #ff6600;
+                outline: none;
+            }
+
+    .btn-1 {
+        background-color: #ff6600;
+        color: #fff;
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-1:hover {
+            background-color: #cc5200;
+            transform: translateY(-2px);
+        }
+
+    #error-message {
+        margin-top: 10px;
+        color: red;
+        text-align: center;
+    }
+
+    p {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+    }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            p a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Yönetici Kaydı";
+}
+
+<div class="container">
+    <form id="registerForm" onsubmit="Kayit(event)">
+        <h2>Yönetici Kaydı</h2>
+
+        <div class="input-control">
+            <input id="username" placeholder="Kullanıcı Adı" type="text" required autofocus>
+        </div>
+        <div class="input-control">
+            <input id="email" placeholder="E-posta" type="email" required>
+        </div>
+        <div class="input-control">
+            <input id="password" placeholder="Şifre" type="password" required>
+        </div>
+
+        <button class="btn-1" type="submit">Kayıt Ol</button>
+        <p id="error-message" style="color: red;"></p>
+        <p>Hesabınız zaten var mı? <a href="/Account/AdminLogin">Giriş Yap</a></p>
+    </form>
+</div>
+
+<script>
+    async function Kayit(event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        let response = await fetch('/Account/AdminRegister', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, email, password })
+        });
+
+        let data = await response.json();
+
+        if (data.success) {
+            window.location.href = '/Account/AdminLogin';
+        } else {
+            document.getElementById("error-message").innerText = data.message || "Kayıt başarısız!";
+        }
+    }
+</script>

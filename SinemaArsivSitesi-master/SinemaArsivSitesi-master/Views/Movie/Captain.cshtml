@@ -1,0 +1,88 @@
+@model SinemaArsivSitesi.Models.Movie
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <title>@Model.Title | BM Film</title>
+</head>
+
+<body>
+    <div class="ust">
+        <a href="@Url.Action("Index", "Home")">
+            <img src="~/img/BM.jpg" height="80" width="250">
+        </a>
+        <div class="butons">
+            <div class="giriss">
+                <a href="@Url.Action("Login", "Account")"><center><button class="btn-1">Giriş Yap</button></center></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu">
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")"><b>AnaSayfa</b></a></li>
+            <li><a href="@Url.Action("Sitemap", "Home")">Site Haritası</a></li>
+            <li><a href="@Url.Action("Contact", "Home")">İletişim</a></li>
+            <li><a href="@Url.Action("About", "Home")">Hakkında</a></li>
+        </ul>
+    </div>
+
+    <div class="ana_govde">
+        <div class="sol">
+            <div class="video">
+                <iframe id="ytplayer" type="text/html" width="100%" height="500"
+                        src="@Model.VideoUrl" frameborder="0"></iframe>
+            </div>
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px;">
+                <h2>@Model.Title (@Model.Year)</h2>
+                <p><strong>IMDb Puanı:</strong> @Model.IMDBRating / 10</p>
+                <p><strong>Süre:</strong> @Model.Duration</p>
+                <p><strong>Yönetmen:</strong> @Model.Director</p>
+                <p><strong>Tür:</strong> @Model.Genre</p>
+                <p><strong>Konu:</strong> @Model.Description</p>
+                <p><strong>Başlıca Oyuncular:</strong></p>
+                <ul>
+                    @foreach (var actor in Model.Actors)
+                    {
+                        <li>@actor</li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="sag">
+            <div class="sosyalmedya">
+                <b>Sosyal Medya Hesaplarımız</b><hr>
+                <div class="social-icons">
+                    <li><a href="https://www.instagram.com/ramazanhrmnr"><img src='~/img/insta.png' /></a></li>
+                    <li><a href="https://www.facebook.com/KeySilver47"><img src='~/img/face.png' /></a></li>
+                    <li><a href="https://twitter.com/ramazanhrm"><img src='~/img/twitter.png' /></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCXMp3MM1blGNIkFii5RLSlg"><img src='~/img/youtube.png' /></a></li>
+                </div>
+            </div>
+
+            <div class="benzerfilmler">
+                <b>Benzer Filmler</b><hr>
+                @if (Model.RelatedMovies != null && Model.RelatedMovies.Any())
+                {
+                    @foreach (var benzerFilm in Model.RelatedMovies)
+                    {
+                        if (benzerFilm.Related != null)
+                        {
+                            <a href="@Url.Action("Details", "Movie", new { id = benzerFilm.Related.Id })">
+                                <img src="@benzerFilm.Related.PosterUrl" height="180" width="127" class="bfilm">
+                            </a>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="menu">
+        <center><b> BM Film Tüm Hakları Saklıdır™ © BM Film </b></center>
+    </div>
+</body>
+</html>

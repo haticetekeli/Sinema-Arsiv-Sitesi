@@ -1,0 +1,80 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "İletişim";
+}
+
+<div class="iletisim-container">
+    <h1>İletişim</h1>
+    <p>Bize ulaşmak için aşağıdaki formu doldurabilirsiniz.</p>
+
+    <form method="post" action="#">
+        <input type="text" name="adsoyad" placeholder="Adınız Soyadınız" required />
+        <input type="email" name="email" placeholder="E-Posta Adresiniz" required />
+        <textarea name="mesaj" rows="5" placeholder="Mesajınızı yazın..." required></textarea>
+        <button type="submit">Gönder</button>
+    </form>
+</div>
+
+<style>
+    .iletisim-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+    }
+
+        .iletisim-container h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .iletisim-container p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .iletisim-container input,
+        .iletisim-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        .iletisim-container button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .iletisim-container button:hover {
+                background-color: #0056b3;
+            }
+
+    @@media (max-width: 600px) {
+        .iletisim-container
+
+    {
+        padding: 20px;
+    }
+
+    .iletisim-container h1 {
+        font-size: 22px;
+    }
+
+    }
+</style>
